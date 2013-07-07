@@ -1,0 +1,11 @@
+<h3>Lets Chat!</h3>
+  <div id="chatlog">
+  {{#each controller id="chatlog"}}
+    {{#view Chat.MessageView messageBinding="this"}}
+      <span class="time">{{time}}</span>
+      <span class="message">{{who}}: {{msg}}</span>
+    {{/view}}
+  {{/each}}
+  </div>
+
+  {{view Chat.MessageInput id="msgInput" valueBinding="text" autocomplete="off"}}

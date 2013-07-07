@@ -1,0 +1,29 @@
+{
+    "name": "nodejs-realtime-startkit"
+  , "description": "NodeJS Realtime Start Kit."
+  , "keywords": ["nodejs", "realtime", "websockets", "socket.io", "bootstrap"]
+  , "author": "Asaf Shakarchi."
+  , "version": "0.0.1"
+  , "private": true
+  , "engines": {
+        "node": "0.10.x"
+      , "npm":  "1.2.x"
+    }
+  , "scripts": {
+      "start": "./node_modules/.bin/nodemon server.coffee",
+      "test": "NODE_ENV=test ./node_modules/.bin/mocha --reporter spec test/test-*.js"
+    }
+  , "dependencies": {
+	  
+      "coffee-script": "latest",
+	  "socketstream": "latest",
+      "ss-coffee": "latest",
+      "ss-stylus": "latest"
+  }
+  , "devDependencies": {
+        "supertest": "latest"
+      , "should": "latest"
+      , "mocha": "latest"
+      , "nodemon": "latest"
+    }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <SocketStream>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>NodeJs RealTime Web App</title>
+  </head>
+  <body>
+      <!-- top-most app template is bound to ApplicationController -->
+      <script type="text/x-handlebars">
+          <div class="navbar"> 
+              <div class="navbar-inner">
+                  {{#linkTo 'index' classNames="brand"}}{{appName}}{{/linkTo}}
+                  <ul class="nav"> 
+                      <li>{{#linkTo 'about' }}About{{/linkTo}}</li> 
+                  </ul>
+              </div>
+          </div>
+          
+          <!--a placeholder that the router will fill in with the appropriate template, based on the current URL.-->
+          {{outlet}}
+      </script>
+      
+      <script type="text/x-handlebars" id="about">
+          <div class="about">
+              <p>ChitChat, coz its fun chattin!</p>
+          </div>
+      </script>
+      
+      
+      <script type="text/x-handlebars" id="login">
+          <div class='container'>
+              <form class='form-signin'>
+                  <h2 class='form-signin-heading'>Login</h2>
+                  {{view Ember.TextField valueBinding="fullName" placeholder='First and Last name' class=':input-block-level'}} 
+                  <button class='btn btn-large btn-primary' type='submit' {{action 'login'}}>Chat Me!</button>
+              </form>
+          </div>
+      </script>
+      
+      <script type="text/x-handlebars" id="chat">
+          {{view Chat.MainView id="chat"}}
+      </script>
+  </body>
+</html>
