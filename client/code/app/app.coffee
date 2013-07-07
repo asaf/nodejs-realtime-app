@@ -11,11 +11,10 @@ Chat.IndexRoute = Ember.Route.extend
 
 Chat.ChatRoute = Ember.Route.extend
     enter: (router) ->
-        controller = this.controllerFor 'login'
+        controller = @controllerFor 'login'
         if not controller.get('fullName')
             @transitionTo 'login'
 
-#TODO Then what is diff between this and IndexController ?
 Chat.ApplicationController = Ember.Controller.extend
   appName: "ChitChat",
   version: 0.1
@@ -54,7 +53,9 @@ Chat.Message = Ember.Object.extend
     send: (cb) ->
         cb = cb or $.noop
         @cb = cb
-        Ember.run.later(this, @run, 100)
+        #simulate a longer delay
+        #Ember.run.later(this, @run, 1000)
+        @run()
     run: () ->
         ss.rpc 'app.sendMsg', @get('who'), @get('msg'), @cb
 
@@ -81,7 +82,7 @@ Chat.MessageView = Ember.View.extend
     return (number < 10 ? '0' : '') + number;
 
 Chat.MessageInput = Ember.TextField.extend
-  sendingBinding: 'Chat.ChatController.sending',
+  sendingBinding: 'controller.sending',
 
   placeholder: ( ->
       if @get('sending') then 'Sending...' else 'Your message'
